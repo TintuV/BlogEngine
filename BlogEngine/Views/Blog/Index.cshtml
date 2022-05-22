@@ -1,0 +1,28 @@
+﻿@using BlogEngine.Models 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Blog Feed</h2>
+@using  (var ctx = new ApplicationDbContext())
+            {
+                foreach(var blog in ctx.Blogs)
+                {
+                    <div class=" panel panel-body">
+                        <h3>
+                            @blog.Title
+                        </h3>
+                        Author:  @blog.Author
+                        <a href="@Url.Action("Generic", "Blog", new {@id=blog.ID})">
+                            Read More....
+                            </a>"
+                        Created ON: @blog.CreatedON.ToShortDateString()
+                    <a href="">Like</a>
+                            
+                        
+
+                    </div>
+
+                }
+            }
+
